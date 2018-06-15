@@ -36,15 +36,15 @@ module.exports = {
         text: 'CSS3&HTML5',
         items: [
           {
-            text: '布局',
+            text: 'CSS3&HTML5 布局',
             link: '/CSS3HTML5/Layout/'
           },
           {
-            text: '新特性',
+            text: 'CSS3&HTML5 新特性',
             link: '/CSS3HTML5/Feature/'
           },
           {
-            text: '基础',
+            text: 'CSS3&HTML5 基础',
             link: '/CSS3HTML5/Base/'
           }
         ]
