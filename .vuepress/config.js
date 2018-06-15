@@ -14,13 +14,15 @@ module.exports = {
   host: 'localhost',
   port: '8088',
   themeConfig: {
-    nav: [{
+    nav: [
+      {
         text: '主页',
         link: '/'
       },
       {
         text: 'ECMAScript',
-        items: [{
+        items: [
+          {
             text: 'ECMAScript5.1',
             link: '/ECMAScript/ECMAScript5/'
           },
@@ -31,40 +33,72 @@ module.exports = {
         ]
       },
       {
-        text: 'CSS3',
-        items: [{
-            text: 'CSS3 布局',
-            link: '/CSS3/Layout/'
+        text: 'CSS3&HTML5',
+        items: [
+          {
+            text: '布局',
+            link: '/CSS3HTML5/Layout/'
           },
           {
-            text: 'CSS3 新特性',
-            link: '/CSS3/Feature/'
+            text: '新特性',
+            link: '/CSS3HTML5/Feature/'
           },
           {
-            text: 'CSS3 基础',
-            link: '/CSS3/Basic/'
+            text: '基础',
+            link: '/CSS3HTML5/Base/'
           }
         ]
       },
       {
-        text: 'HTML5',
-        link: '/HTML5/'
-      },
-      {
         text: 'Node.js',
-        link: '/Node/'
+        items: [
+          {
+            text: 'Node 基础',
+            link: '/Node/Base/'
+          },
+          {
+            text: 'Koa',
+            link: '/Node/Koa/'
+          }
+        ]
       },
       {
-        text: 'Server',
-        link: '/Server/'
+        text: '服务端',
+        items: [
+          {
+            text: 'Java 开发',
+            link: '/Server/Java/'
+          },
+          {
+            text: 'Python 爬虫',
+            link: '/Server/Python/'
+          }
+        ]
+      },
+      {
+        text: 'Tool',
+        items: [
+          {
+            text: 'Git 版本管理',
+            link: '/Tool/Git/'
+          },
+          {
+            text: 'MarkDown 编辑器',
+            link: '/Tool/MarkDown/'
+          },
+          {
+            text: 'Nginx 服务器',
+            link: '/Tool/Nginx/'
+          },
+          {
+            text: 'MySql 数据库',
+            link: '/Tool/MySql/'
+          }
+        ]
       },
       {
         text: 'HTTP',
         link: '/HTTP/'
-      },
-      {
-        text: 'Tool',
-        link: '/Tool/'
       },
       {
         text: '博主',
@@ -75,19 +109,29 @@ module.exports = {
       '/',
       {
         title: 'ECMAScript',
-        children: [
-          '/ECMAScript/',
-          '/ECMAScript/ECMAScript5/',
-          '/ECMAScript/ECMAScript2015/'
-        ]
+        children: ['/ECMAScript/ECMAScript5/', '/ECMAScript/ECMAScript2015/']
       },
       {
-        title: 'CSS3',
-        children: ['/CSS3/Layout/', '/CSS3/Feature/', '/CSS3/Basic/']
+        title: 'CSS3&HTML5',
+        children: ['/CSS3HTML5/Layout/', '/CSS3HTML5/Feature/', '/CSS3HTML5/Base/']
       },
-      '/HTML5/',
-      '/Node/',
-      '/Server/',
+      {
+        title: 'Node',
+        children: ['/Node/Base/', '/Node/Koa/']
+      },
+      {
+        title: '服务端',
+        children: ['/Server/Java/', '/Server/Python/']
+      },
+      {
+        title: '工具',
+        children: [
+          '/Tool/Git/',
+          '/Tool/MarkDown/',
+          '/Tool/Nginx/',
+          '/Tool/MySql/'
+        ]
+      },
       '/HTTP/'
     ]
   }
