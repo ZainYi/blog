@@ -14,28 +14,33 @@ module.exports = {
   host: 'localhost',
   port: '8088',
   themeConfig: {
-    nav: [
-      {
+    nav: [{
         text: '主页',
         link: '/'
       },
       {
         text: 'ECMAScript',
-        items: [
-          {
+        items: [{
             text: 'ECMAScript5.1',
             link: '/ECMAScript/ECMAScript5/'
           },
           {
             text: 'ECMAScript2015+',
             link: '/ECMAScript/ECMAScript2015/'
-          }
+          },
+          {
+            text: 'Vue',
+            link: '/ECMAScript/Vue/'
+          },
+          {
+            text: 'React',
+            link: '/ECMAScript/React/'
+          },
         ]
       },
       {
         text: 'CSS3&HTML5',
-        items: [
-          {
+        items: [{
             text: 'CSS3&HTML5 布局',
             link: '/CSS3HTML5/Layout/'
           },
@@ -51,8 +56,7 @@ module.exports = {
       },
       {
         text: 'Node.js',
-        items: [
-          {
+        items: [{
             text: 'Node 基础',
             link: '/Node/Base/'
           },
@@ -64,8 +68,7 @@ module.exports = {
       },
       {
         text: '服务端',
-        items: [
-          {
+        items: [{
             text: 'Java 开发',
             link: '/Server/Java/'
           },
@@ -77,8 +80,7 @@ module.exports = {
       },
       {
         text: 'Tool',
-        items: [
-          {
+        items: [{
             text: 'Git 版本管理',
             link: '/Tool/Git/'
           },
@@ -109,7 +111,7 @@ module.exports = {
       '/',
       {
         title: 'ECMAScript',
-        children: ['/ECMAScript/ECMAScript5/', '/ECMAScript/ECMAScript2015/']
+        children: ['/ECMAScript/ECMAScript5/', '/ECMAScript/ECMAScript2015/', '/ECMAScript/Vue/', '/ECMAScript/React/']
       },
       {
         title: 'CSS3&HTML5',
