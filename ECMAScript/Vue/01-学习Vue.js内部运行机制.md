@@ -16,7 +16,7 @@ sidebar: auto
 ## 目录
 
 - [运行机制全局概览](#全局概览)
-- [响应式系统的基本原理](/ECMAScript/Vue/02-响应式系统的基本原理.md)
+- [响应式系统的基本原理](/ECMAScript/Vue/01-响应式系统的基本原理.md)
 - [响应式系统的依赖收集追踪原理](#响应式系统的依赖收集追踪原理)
 - [实现虚拟 DOM 下的一个 VNode 节点](#实现虚拟DOM下的一个VNode节点)
 - [template 模版是怎样通过 Compile 编译的](#template模版是怎样通过Compile编译的)
