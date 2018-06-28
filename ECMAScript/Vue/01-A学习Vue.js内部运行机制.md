@@ -16,13 +16,15 @@ sidebar: auto
 ## 目录
 
 - [运行机制全局概览](#全局概览)
-- [响应式系统的基本原理](/ECMAScript/Vue/01-响应式系统的基本原理.md)
-- [响应式系统的依赖收集追踪原理](#响应式系统的依赖收集追踪原理)
+- [响应式系统的基本原理](/ECMAScript/Vue/01-B响应式系统的基本原理.md)
+- [响应式系统的依赖收集追踪原理](/ECMAScript/Vue/01-C响应式系统的依赖收集追踪原理.md)
 - [实现虚拟 DOM 下的一个 VNode 节点](#实现虚拟DOM下的一个VNode节点)
 - [template 模版是怎样通过 Compile 编译的](#template模版是怎样通过Compile编译的)
 - [批量异步更新策略及 nextTick 原理](#批量异步更新策略及nextTick原理)
 - [Vuex 状态管理的工作原理](#Vuex状态管理的工作原理)
 - [其他问题](#其他问题)
+
+[原创地址](https://juejin.im/book/5a36661851882538e2259c0f)
 
 ## 全局概览
 
