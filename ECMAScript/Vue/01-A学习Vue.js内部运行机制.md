@@ -72,11 +72,11 @@ compile 编译可以分成 `parse`、`optimize` 与 `generate` 三个阶段，�
 
 ![依赖收集](./image/001005.png)
 
-在修改对象的时候，会触发 `setter`，`setter` 通知之前的 **依赖收集** 得到的 Dep 中的每一个 Watcher，告诉其值改变了，需要重新渲染视图。这时候这些 Watcher 就回开始调用 `update` 来更新视图，当然这中间还有一个 `patch` 以及使用队列来异步更新的策略
+在修改对象的时候，会触发 `setter`，`setter` 通知之前的 **依赖收集** 得到的 Dep 中的每一个 Watcher，告诉其值改变了，需要重新渲染视图。这时候这些 Watcher 就会开始调用 `update` 来更新视图，当然这中间还有一个 `patch` 以及使用队列来异步更新的策略
 
 ## Virtual DOM
 
-render function 会被转化成 VNode 节点。Virtual DOM 其实就是一颗以 JavaScript 对象（VNode 节点）作为基础的树，用对象属性来描述节点，实际上只是一层对真是 DOM 的抽象，最终可以通过一系列操作使这棵树映射到真是环境上。由于 Virtual DOM 是以 JavaScript 对象为基础而不依赖真实平台环境，所以使他具有了跨平台的能力，比如说浏览器平台、Weex、Node 等，比如：
+render function 会被转化成 VNode 节点。Virtual DOM 其实就是一棵以 JavaScript 对象（VNode 节点）作为基础的树，用对象属性来描述节点，实际上只是一层对真是 DOM 的抽象，最终可以通过一系列操作使这棵树映射到真是环境上。由于 Virtual DOM 是以 JavaScript 对象为基础而不依赖真实平台环境，所以使他具有了跨平台的能力，比如说浏览器平台、Weex、Node 等，比如：
 
 ```javascript
 {
@@ -106,7 +106,7 @@ render function 会被转化成 VNode 节点。Virtual DOM 其实就是一颗以
 
 前面有说到，在修改一个对象值的时候，会通过 `setter -> Watcher -> update` 的流程来修改对应的视图，那么最终是如何更新视图的？
 
-当数据变化后，执行 render function 就可以得到一个新的 VNode 节点，如果想要得到新的视图，最简单粗暴的方式就是直接解析这个新的 VNode 节点，然后用 `innerHTML` 直接全部渲染到真实的 DOM 中。但是其实只是对其中一小块内容进行的修改，这样做似乎有些 **浪费**
+当数据变化后，执行 render function 就可以得到一个新的 VNode 节点，如果想要得到新的视图，最简单粗暴的方式就是直接解析这个新的 VNode 节点，然后用 `innerHTML` 直接全部渲染到真实的 DOM 中。但是其实只是对其中一小块内容进行修改，这样做似乎有些 **浪费**
 
 那么为什么不能只修改 **改变了的地方** 呢？这个时候就要介绍 `patch` 了，将新的 VNode 与旧的 VNode 一起传入 `patch` 进行比较，经过 `diff` 算法得出它们的 **差异**，最后只需要将这些 **差异** 对应的 DOM 进行修改即可
 
@@ -117,5 +117,5 @@ render function 会被转化成 VNode 节点。Virtual DOM 其实就是一颗以
 ### 看完这篇文章有几个疑问？
 
 1.  `parse` 解析形成的 `AST` 是什么结构，什么样的？
-2.  render function 的字符串是怎么执行？ eval？
+2.  render function 的字符串是怎样的？ 用 `eval` 执行？ 还是直接放到 `DOM` 里去
 3.  依赖收集的时候，所有的 Watcher 对象放在一个大对象里面？观察者模式？
