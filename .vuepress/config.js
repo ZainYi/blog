@@ -40,19 +40,7 @@ module.exports = {
       },
       {
         text: 'CSS3&HTML5',
-        items: [{
-            text: 'CSS3&HTML5 布局',
-            link: '/CSS3HTML5/Layout/'
-          },
-          {
-            text: 'CSS3&HTML5 新特性',
-            link: '/CSS3HTML5/Feature/'
-          },
-          {
-            text: 'CSS3&HTML5 基础',
-            link: '/CSS3HTML5/Base/'
-          }
-        ]
+        link: '/CSS3HTML5/'
       },
       {
         text: 'Node.js',
@@ -80,23 +68,7 @@ module.exports = {
       },
       {
         text: 'Tool',
-        items: [{
-            text: 'Git 版本管理',
-            link: '/Tool/Git/'
-          },
-          {
-            text: 'MarkDown 编辑器',
-            link: '/Tool/MarkDown/'
-          },
-          {
-            text: 'Nginx 服务器',
-            link: '/Tool/Nginx/'
-          },
-          {
-            text: 'MySql 数据库',
-            link: '/Tool/MySql/'
-          }
-        ]
+        link: '/Tool/'
       },
       {
         text: 'HTTP',
@@ -113,10 +85,7 @@ module.exports = {
         title: 'ECMAScript',
         children: ['/ECMAScript/ECMAScript5/', '/ECMAScript/ECMAScript2015/', '/ECMAScript/Vue/', '/ECMAScript/React/']
       },
-      {
-        title: 'CSS3&HTML5',
-        children: ['/CSS3HTML5/Layout/', '/CSS3HTML5/Feature/', '/CSS3HTML5/Base/']
-      },
+      '/CSS3HTML5/',
       {
         title: 'Node',
         children: ['/Node/Base/', '/Node/Koa/']
@@ -125,15 +94,7 @@ module.exports = {
         title: '服务端',
         children: ['/Server/Java/', '/Server/Python/']
       },
-      {
-        title: '工具',
-        children: [
-          '/Tool/Git/',
-          '/Tool/MarkDown/',
-          '/Tool/Nginx/',
-          '/Tool/MySql/'
-        ]
-      },
+      '/Tool/',
       '/HTTP/'
     ]
   }
