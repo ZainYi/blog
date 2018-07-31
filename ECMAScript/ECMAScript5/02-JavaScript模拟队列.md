@@ -13,29 +13,33 @@ function Queue() {
   this.items = []
 }
 
-// 入列
-Queue.prototype.enqueue = function(element) {
-  this.items.push(element)
-}
+Queue.prototype = {
+  constructor: Queue,
 
-// 出列
-Queue.prototype.dequeque = function() {
-  this.items.shift()
-}
+  // 入列
+  enqueue: function(element) {
+    this.items.push(element)
+  },
 
-// 查看队列第一个元素
-Queue.prototype.front = function() {
-  return this.items[0]
-}
+  // 出列
+  dequeque: function() {
+    this.items.shift()
+  },
 
-// 查看队列是否为空
-Queue.prototype.isEmpty = function() {
-  return this.items.length === 0
-}
+  // 查看队列第一个元素
+  front: function() {
+    return this.items[0]
+  },
 
-// 查看队列元素个数
-Queue.prototype.size = function() {
-  return this.items.length
+  // 查看队列是否为空
+  isEmpty: function() {
+    return this.items.length === 0
+  },
+
+  // 查看队列元素个数
+  size: function() {
+    return this.items.length
+  }
 }
 ```
 

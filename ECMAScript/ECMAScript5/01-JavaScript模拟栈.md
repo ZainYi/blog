@@ -17,38 +17,42 @@ function Stack() {
   this.items = []
 }
 
-// 进栈
-Stack.prototype.push = function(element) {
-  return this.items.push(element)
-}
+Stack.prototype = {
+  constructor: Stack,
 
-// 出栈
-Stack.prototype.pop = function() {
-  return this.items.pop()
-}
+  // 进栈
+  push: function(element) {
+    return this.items.push(element)
+  },
 
-// 查看栈顶的元素
-Stack.prototype.peek = function() {
-  const len = this.items.length
-  if (len === 0) {
-    return
+  // 出栈
+  pop: function() {
+    return this.items.pop()
+  },
+
+  // 查看栈顶的元素
+  peek: function() {
+    const len = this.items.length
+    if (len === 0) {
+      return
+    }
+    return this.items[len - 1]
+  },
+
+  // 查看栈是否为空
+  isEmpty: function() {
+    return this.item.length === 0
+  },
+
+  // 栈清空
+  clear: function() {
+    this.items = []
+  },
+
+  // 获取栈内元素个数
+  size: function() {
+    return this.item.length
   }
-  return this.items[len - 1]
-}
-
-// 查看栈是否为空
-Stack.prototype.isEmpty = function() {
-  return this.item.length === 0
-}
-
-// 栈清空
-Stack.prototype.clear = function() {
-  this.items = []
-}
-
-// 获取栈内元素个数
-Stack.prototype.size = function() {
-  return this.item.length
 }
 ```
 
