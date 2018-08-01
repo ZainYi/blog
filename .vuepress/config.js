@@ -14,24 +14,26 @@ module.exports = {
   host: 'localhost',
   port: '8088',
   themeConfig: {
-    nav: [{
+    nav: [
+      {
         text: '主页',
         link: '/'
       },
       {
-        text: 'JavaScript',
-        items: [{
-            text: 'ECMAScript',
-            link: '/JavaScript/ECMAScript/'
+        text: 'ECMAScript',
+        items: [
+          {
+            text: 'JavaScript',
+            link: '/ECMAScript/JavaScript/'
           },
           {
             text: 'Vue',
-            link: '/JavaScript/Vue/'
+            link: '/ECMAScript/Vue/'
           },
           {
             text: 'React',
-            link: '/JavaScript/React/'
-          },
+            link: '/ECMAScript/React/'
+          }
         ]
       },
       {
@@ -40,7 +42,8 @@ module.exports = {
       },
       {
         text: 'Node.js',
-        items: [{
+        items: [
+          {
             text: 'Node 基础',
             link: '/Node/Base/'
           },
@@ -52,7 +55,8 @@ module.exports = {
       },
       {
         text: '服务端',
-        items: [{
+        items: [
+          {
             text: 'Java 开发',
             link: '/Server/Java/'
           },
@@ -78,8 +82,12 @@ module.exports = {
     sidebar: [
       '/',
       {
-        title: 'JavaScript',
-        children: ['/JavaScript/ECMAScript/', '/JavaScript/Vue/', '/JavaScript/React/']
+        title: 'ECMAScript',
+        children: [
+          '/ECMAScript/JavaScript/',
+          '/ECMAScript/Vue/',
+          '/ECMAScript/React/'
+        ]
       },
       '/CSS3HTML5/',
       {
