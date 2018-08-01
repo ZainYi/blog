@@ -6,46 +6,42 @@ sidebar: auto
 
 队列是遵循 FIFO（First In First Out，先进先出，也称为先来先服务）原则的一组有序的项。队列在尾部添加新元素，并从顶部移除元素。最新添加的元素必须排在队列的末尾
 
-ES5 模拟实现
-
-```javascript
-function Queue() {
-  this.items = []
-}
-
-Queue.prototype = {
-  constructor: Queue,
-
-  // 入列
-  enqueue: function(element) {
-    this.items.push(element)
-  },
-
-  // 出列
-  dequeque: function() {
-    this.items.shift()
-  },
-
-  // 查看队列第一个元素
-  front: function() {
-    return this.items[0]
-  },
-
-  // 查看队列是否为空
-  isEmpty: function() {
-    return this.items.length === 0
-  },
-
-  // 查看队列元素个数
-  size: function() {
-    return this.items.length
-  }
-}
-```
-
 ES6 模拟实现
 
 ```javascript
+class Queue {
+  constructor() {
+    this.items = []
+  }
+
+  // 入列
+  enqueue(element) {
+    return this.items.push(element)
+  }
+
+  // 出列
+  dequeue() {
+    return this.items.shift()
+  }
+
+  // 查看队列第一个元素
+  front() {
+    return this.items[0]
+  }
+
+  // 查看队列是否为空
+  isEmpty() {
+    return this.items.length === 0
+  }
+
+  // 查看队列元素个数
+  size() {
+    const items = this.items
+    return items.length
+  }
+}
+
+// 闭包和 WeakMap 实现 items 的不可变性
 const Queue = (() => {
   const items = new WeakMap()
 
@@ -54,27 +50,31 @@ const Queue = (() => {
       items.set(this, [])
     }
 
+    // 入列
     enqueue(element) {
       const q = items.get(this)
       return q.push(element)
     }
 
+    // 出列
     dequeue() {
       const q = items.get(this)
-      const r = q.shift()
-      return r
+      return q.shift()
     }
 
+    // 查看队列第一个元素
     front() {
       const q = items.get(this)
       return q[0]
     }
 
+    // 查看队列是否为空
     isEmpty() {
       const q = items.get(this)
       return q.length === 0
     }
 
+    // 查看队列元素个数
     size() {
       const q = items.get(this)
       return q.length
@@ -92,30 +92,69 @@ const Queue = (() => {
 实现一个优先队列，有两种选项：设置优先级，然后在正确的位置添加元素；或者用入列操作添加元素，然后按照优先级移除它们
 
 ```javascript
-function PriorityQueue() {
-  let items = []
-  function QueueElement(element, priority) {
+// 辅助类，创建队列元素
+class QueueElement {
+  constructor(element, priority) {
     this.element = element
     this.priority = priority
   }
-  this.enqueue = function(element, priority) {
-    let queueElement = new QueueElement(element, priority)
-    let added = false
+}
+
+class PriorityQueue {
+  constructor() {
+    this.items = []
+  }
+
+  enqueue(element, priority) {
+    const items = this.items
+    const queueElement = new QueueElement(element, priority)
+
+    let added = false // 默认元素未被添加过
     for (let i = 0; i < items.length; i++) {
       if (queueElement.priority < items[i].priority) {
-        items.splice(i, 0, queueElement)
+        this.items.splice(i, 0, queueElement)
         added = true
         break
       }
     }
 
-    // 队列为空可以直接添加到队列
+    // 未被添加过就直接添加到队列
     if (!added) {
       items.push(queueElement)
     }
   }
-  // 其他方法和默认的Queue实现相同
+
+  dequeue() {
+    this.items.shift()
+  }
+
+  front() {
+    return this.items[0]
+  }
+
+  isEmpty() {
+    return this.items.length === 0
+  }
+
+  size() {
+    return this.items.length
+  }
+
+  print() {
+    const items = this.items
+    const length = items.length
+    for (let i = 0; i < length; i++) {
+      console.log(items[i].element + '-' + items[i].priority)
+    }
+  }
 }
+
+const priorityQueue = new PriorityQueue()
+priorityQueue.enqueue('John', 2)
+priorityQueue.enqueue('Jack', 1)
+priorityQueue.enqueue('Camila', 1)
+priorityQueue.enqueue('Camila', 3)
+priorityQueue.print()
 ```
 
 ## 循环队列

@@ -10,52 +10,6 @@ sidebar: auto
 
 ### 用 JavaScript 模拟栈
 
-ES5 模拟实现
-
-```javascript
-function Stack() {
-  this.items = []
-}
-
-Stack.prototype = {
-  constructor: Stack,
-
-  // 进栈
-  push: function(element) {
-    return this.items.push(element)
-  },
-
-  // 出栈
-  pop: function() {
-    return this.items.pop()
-  },
-
-  // 查看栈顶的元素
-  peek: function() {
-    const len = this.items.length
-    if (len === 0) {
-      return
-    }
-    return this.items[len - 1]
-  },
-
-  // 查看栈是否为空
-  isEmpty: function() {
-    return this.item.length === 0
-  },
-
-  // 栈清空
-  clear: function() {
-    this.items = []
-  },
-
-  // 获取栈内元素个数
-  size: function() {
-    return this.item.length
-  }
-}
-```
-
 ES6 模拟实现
 
 ```javascript
@@ -64,14 +18,17 @@ class Stack {
     this.items = []
   }
 
+  // 进栈
   push(element) {
     this.items.push(element)
   }
 
+  // 出栈
   pop() {
     return this.items.pop()
   }
 
+  // 查看栈顶的元素
   peek() {
     const len = this.items.length
     if (len === 0) {
@@ -80,14 +37,17 @@ class Stack {
     return this.items[len - 1]
   }
 
+  // 查看栈是否为空
   isEmpty() {
     return this.item.length === 0
   }
 
+  // 栈清空
   clear() {
     this.items = []
   }
 
+  // 获取栈内元素个数
   size() {
     return this.item.length
   }

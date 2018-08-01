@@ -19,22 +19,18 @@ module.exports = {
         link: '/'
       },
       {
-        text: 'ECMAScript',
+        text: 'JavaScript',
         items: [{
-            text: 'ECMAScript5.1',
-            link: '/ECMAScript/ECMAScript5/'
-          },
-          {
-            text: 'ECMAScript2015+',
-            link: '/ECMAScript/ECMAScript2015/'
+            text: 'ECMAScript',
+            link: '/JavaScript/ECMAScript/'
           },
           {
             text: 'Vue',
-            link: '/ECMAScript/Vue/'
+            link: '/JavaScript/Vue/'
           },
           {
             text: 'React',
-            link: '/ECMAScript/React/'
+            link: '/JavaScript/React/'
           },
         ]
       },
@@ -82,8 +78,8 @@ module.exports = {
     sidebar: [
       '/',
       {
-        title: 'ECMAScript',
-        children: ['/ECMAScript/ECMAScript5/', '/ECMAScript/ECMAScript2015/', '/ECMAScript/Vue/', '/ECMAScript/React/']
+        title: 'JavaScript',
+        children: ['/JavaScript/ECMAScript/', '/JavaScript/Vue/', '/JavaScript/React/']
       },
       '/CSS3HTML5/',
       {
