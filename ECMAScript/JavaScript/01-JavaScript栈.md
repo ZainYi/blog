@@ -2,7 +2,7 @@
 sidebar: auto
 ---
 
-# JavaScript 模拟栈
+# JavaScript 栈
 
 ## 栈
 
