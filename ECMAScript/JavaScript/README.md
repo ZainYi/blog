@@ -2,6 +2,9 @@
 
 ### 学习 JavaScript 数据结构与算法
 
+- [学习总结](/ECMAScript/JavaScript/10-学习总结.md) —— 2017/01/21
+- [JavaScript 搜索](/ECMAScript/JavaScript/09-JavaScript搜索.md) —— 2017/01/21
+- [JavaScript 排序](/ECMAScript/JavaScript/08-JavaScript排序.md) —— 2017/01/21
 - [JavaScript 图](/ECMAScript/JavaScript/07-JavaScript图.md) —— 2017/01/19
 - [JavaScript 树](/ECMAScript/JavaScript/06-JavaScript树.md) —— 2017/01/18
 - [JavaScript 字典和散列值](/ECMAScript/JavaScript/05-JavaScript字典和散列值.md) —— 2017/01/17
