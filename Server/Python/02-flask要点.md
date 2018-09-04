@@ -2,7 +2,9 @@
 sidebar: auto
 ---
 
-# flask 要点
+# flask
+
+## 要点
 
 - flask 路由遵循最小原型和唯一 URL 原则
 
@@ -58,3 +60,25 @@ sidebar: auto
   - Flask_SQLAlchemy
   - `SQLALCHEMY_DATABASE_URI = 'mysql+cymysql://root:123456@localhost:3306/fisher'`
   - `SQLALCHEMY_TRACK_MODIFICATIONS = False`
+
+## flask 核心
+
+- `Flask` app 核心对象
+- `Request` 请求核心对象
+- `AppContext` 应用上下文
+  - 是对 `Flask` 核心的包装
+- `RequestContext` 请求上下文
+  - 是对 `Request` 核心的包装
+  - 它要入栈会在逻辑上检查对应的 `AppContext` 是否入栈
+- `request` 请求上下文栈顶对象
+  - 实际上是根据 `name` 返回的一个对象
+  - 通过 `LocalProxy()` 获取
+- `current_app` 应用上下文栈顶对象
+  - 实际上返回的是 app 核心对象
+  - 通过 `LocalProxy()` 获取
+- 通过 `ctx = app.app_context()` 创建一个应用上下文
+  - `ctx.push()` 压栈
+  - `ctx.pop()` 弹栈
+
+flask 核心流程图
+![flask核心流程图](./image/002001.png)
