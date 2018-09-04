@@ -100,3 +100,58 @@ with open(r'path') as f:
 
 flask 核心流程图
 ![flask核心流程图](./image/002001.png)
+
+## 进程和线程
+
+### 进程
+
+计算机资源是有限的，应用程序需要去竞争计算机的资源，而进程是竞争计算机资源的基本单元
+
+操作系统如何管理应用程序对计算机的资源进行竞争————进程管理。进程是操作系统用来调度和分配资源的单位。每个应用程序至少一个进程，操作系统调度不同的进程，让他们轮番的使用计算机的进程
+
+单核 CPU，同一时刻只能运行一个应用程序，但 CPU 的运算速度足够快（快到感觉不到切换），所以 CPU 可以不同时刻在不同应用程序之间切换运行（进程调度）。进程/线程切换对系统的开销是比较大的，因为要切换应用程序的上下文，不同的应用程序的上下文是不一样的
+
+### 线程
+
+线程是进程的一部分，一个进程可以有一个或者多个线程。CPU 越来越快，进程管理调度的粒度太大，不能高效利用 CPU 的性能，需要一个更小的单元来管理/使用 CPU 的资源，进程的切换非常笨重，所以需要更灵活的线程机制来协调 CPU 资源的利用，线程切换的消化远比进程切换要小。线程与进程最大的区别是分工不同，**进程分配资源，线程利用 CPU 等资源执行代码或程序**
+
+### 多线程
+
+```python
+import threading
+
+t = threading.current_threading() # 获取当前线程，默认是主线程
+
+new_t = threading.Thread(target=func, name='thread_name') # 传入子线程执行的目标函数
+new_t.start() # 启动子线程，并不会阻塞主线程里的其他代码执行，只是启动
+
+print(t.getName())
+```
+
+优点
+
+- 更加充分的利用 CPU 的性能优势
+- 异步编程
+- 适合 IO 密集型的程序，查询数据库、请求网络资源、读写文件等
+
+缺点
+
+- python 不能充分利用多核 CPU 的优势，但并不一定是鸡肋
+- GIL 全局解释器锁，决定同一时刻一个 CPU 核上只能执行一个线程，GIL 是为了线程安全
+- 严重依赖于 CPU 计算的程序来说，比较鸡肋（CPU 密集型的程序）
+
+flask
+
+- flask 默认是单进程、单线程的
+- 通过指定关键参数 `threaded=True` 开启多线程，`processs=2` 开启多进程
+- flask 使用了 werkzeug 库来实现线程隔离，里面有一个 Local 对象用来做线程隔离，实际上就是对字典数据结构和线程 id 的封装
+- Local 使用字典的方式实现线程隔离
+- LocalStack 封装了 Local 对象，将其作为自己的一个私有属性，从而实现了线程隔离的栈结构
+- 梳理
+  - 以线程 ID 号作为 key 的字典 → Local → LocalStack
+  - AppContext、RequestContext → LocalStack
+  - Flask → AppContext Request → RequestContext
+  - current_app → (LocalStack.top = AppContext top.app=Flask)
+  - request → (LocalStack.top = RequestContext top.Request=Request)
+
+> 使用线程隔离的意义：使当前线程能够正确引用到它自己创建的对象，而不是引用到其他线程所创建的对象，这些对象是保存状态的地方
