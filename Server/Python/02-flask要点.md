@@ -79,6 +79,24 @@ sidebar: auto
 - 通过 `ctx = app.app_context()` 创建一个应用上下文
   - `ctx.push()` 压栈
   - `ctx.pop()` 弹栈
+- `with` 语句，上下文表达式
+  - 实现了 `__enter__` 和 `__exit__` 方法，就可以使用 `with` 语句，即实现了上下文协议
+  - 上下文管理器包含：`__enter__` 和 `__exit__`
+  - `__exit__` 返回 `False` 则 `with` 外部会继续抛出异常，`True` 则不会
+  - 用处：链接数据库、文件读写
+  - 一些地方可以替代 `try except finally`
+  - as 后面的变量是 `__enter__` 返回的值
+
+```python
+with app.app_context():
+    a = current_app
+    print(a)
+    b = current_app.config['DEBUG']
+
+with open(r'path') as f:
+  print(f.read())
+  # f.close() 会自动执行
+```
 
 flask 核心流程图
 ![flask核心流程图](./image/002001.png)
