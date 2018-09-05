@@ -163,7 +163,7 @@ flask
 - 只有方法的类，其实是伪装为面向对象的面向过程
 - 一个类的方法大量标注了 `@classmethod @static`，即方法并未使用到任何类变量和实例变量，封装性不太好
 
-## python 序列号 class 类对象
+## python 序列化 class 类对象
 
 - 使用 json 模块, `json.dumps(obj, default=lambda o:o.__dict__)`
 - 函数式编程转义 json 序列化的代码解释权
