@@ -155,3 +155,15 @@ flask
   - request → (LocalStack.top = RequestContext top.Request=Request)
 
 > 使用线程隔离的意义：使当前线程能够正确引用到它自己创建的对象，而不是引用到其他线程所创建的对象，这些对象是保存状态的地方
+
+## 面向对象滥用
+
+- 面向对象应该描述特征（类变量、实例变量）
+- 面向对象应该具有行为（方法）
+- 只有方法的类，其实是伪装为面向对象的面向过程
+- 一个类的方法大量标注了 `@classmethod @static`，即方法并未使用到任何类变量和实例变量，封装性不太好
+
+## python 序列号 class 类对象
+
+- 使用 json 模块, `json.dumps(obj, default=lambda o:o.__dict__)`
+- 函数式编程转义 json 序列化的代码解释权
