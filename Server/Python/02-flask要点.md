@@ -167,3 +167,8 @@ flask
 
 - 使用 json 模块, `json.dumps(obj, default=lambda o:o.__dict__)`
 - 函数式编程转义 json 序列化的代码解释权
+
+## flask-sqlacodegen
+
+- `pipe flask-sqlacodegen`
+- `flask-sqlacodegen mysql+cymysql://root:123456@localhost:3306/dbname --table tablename --outfile pathname`

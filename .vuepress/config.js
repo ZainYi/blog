@@ -1,7 +1,7 @@
 module.exports = {
   dest: 'dist',
   title: 'Zain Yi',
-  description: '成为一个靠谱的黑客',
+  description: 'TO BE A CRACKER',
   head: [
     [
       'link',
@@ -21,37 +21,15 @@ module.exports = {
       },
       {
         text: 'ECMAScript',
-        items: [
-          {
-            text: 'JavaScript',
-            link: '/ECMAScript/JavaScript/'
-          },
-          {
-            text: 'Vue',
-            link: '/ECMAScript/Vue/'
-          },
-          {
-            text: 'React',
-            link: '/ECMAScript/React/'
-          }
-        ]
+        link: '/ECMAScript/'
       },
       {
         text: 'CSS3&HTML5',
         link: '/CSS3HTML5/'
       },
       {
-        text: 'Node.js',
-        items: [
-          {
-            text: 'Node 基础',
-            link: '/Node/Base/'
-          },
-          {
-            text: 'Koa',
-            link: '/Node/Koa/'
-          }
-        ]
+        text: 'Node',
+        link: '/Node/'
       },
       {
         text: '服务端',
@@ -81,19 +59,9 @@ module.exports = {
     ],
     sidebar: [
       '/',
-      {
-        title: 'ECMAScript',
-        children: [
-          '/ECMAScript/JavaScript/',
-          '/ECMAScript/Vue/',
-          '/ECMAScript/React/'
-        ]
-      },
+      '/ECMAScript/',
       '/CSS3HTML5/',
-      {
-        title: 'Node',
-        children: ['/Node/Base/', '/Node/Koa/']
-      },
+      '/Node/',
       {
         title: '服务端',
         children: ['/Server/Java/', '/Server/Python/']
