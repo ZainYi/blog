@@ -1,5 +1,7 @@
 # ECMAScript
 
+- [promiseA+规范](/ECMAScript/11promiseA+规范.md) —— 2017/03/21
+
 ### 学习 JavaScript 数据结构与算法
 
 - [学习总结](/ECMAScript/10-学习总结.md) —— 2017/01/21
