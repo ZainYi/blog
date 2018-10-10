@@ -79,95 +79,95 @@ const FULFILLED = 1
 const REJECTED = 2
 
 function Promise(fn) {
-  let state = PENDING // 状态
-  let value = null // 存储 FULFILLED 或者 REJECTED 状态时的值
-  let handlers = [] // 存储成功或者失败的处理器
-
-  function fulfill(result) {
-    state = FULFILLED
-    value = result
-    handlers.forEach(handle)
-    handlers = null
-  }
-
-  function reject(error) {
-    state = REJECTED
-    value = error
-    handlers.forEach(handle)
-    handlers = null
-  }
-
-  function resolve(result) {
-    try {
-      var then = getThen(result)
-
-      // then 是个方法
-      if (then) {
-        doResolve(then.bind(result), resolve, reject)
-        return
-      }
-      fulfill(result)
-    } catch (e) {
-      reject(e)
-    }
-  }
-
-  function handle(handler) {
-    if (state === PENDING) {
-      handlers.push(handler)
-    } else {
-      if (state === FULFILLED && typeof handler.onFulfilled === 'function') {
-        handler.onFulfilled(value)
-      }
-
-      if (state === REJECTED && typeof handler.onRejected === 'function') {
-        handler.onRejected(value)
-      }
-    }
-  }
-
-  this.done = function(onFulfilled, onRejected) {
-    // 保证这个方法是异步的
-    setTimeout(function() {
-      handle({
-        onFulfilled: onFulfilled,
-        onRejected: onRejected
-      })
-    }, 0)
-  }
-
-  this.then = function(onFulfilled, onRejected) {
-    const self = this
-
-    return new Promise(function(resolve, reject) {
-      return self.done(
-        function(result) {
-          if (typeof onFulfilled === 'function') {
-            try {
-              return resolve(onFulfilled(result))
-            } catch (error) {
-              return reject(error)
-            }
-          } else {
-            return resolve(result)
-          }
-        },
-        function(reason) {
-          if (typeof onRejected === 'function') {
-            try {
-              return resolve(onRejected(reason))
-            } catch (error) {
-              return reject(error)
-            }
-          } else {
-            return reject(reason)
-          }
-        }
-      )
-    })
-  }
+  this.state = PENDING // 状态
+  this.value = null // 存储 FULFILLED 或者 REJECTED 状态时的值
+  this.handlers = [] // 存储成功或者失败的处理器
 
   doResolve(fn, resolve, reject)
+}
+
+Promise.prototype.fulfill = function(result) {
+  this.state = FULFILLED
+  this.value = result
+  this.handlers.forEach(handle)
+  this.handlers = null
+}
+
+Promise.prototype.reject = function(error) {
+  this.state = REJECTED
+  this.value = error
+  this.handlers.forEach(handle)
+  this.handlers = null
+}
+
+Promise.prototype.resolve = function(result) {
+  try {
+    var then = getThen(result)
+
+    // then 是个方法
+    if (then) {
+      doResolve(then.bind(result), resolve, reject)
+      return
+    }
+    fulfill(result)
+  } catch (e) {
+    reject(e)
+  }
+}
+
+Promise.prototype.handle = function(handler) {
+  if (this.state === PENDING) {
+    handlers.push(handler)
+  } else {
+    if (this.state === FULFILLED && typeof handler.onFulfilled === 'function') {
+      handler.onFulfilled(value)
+    }
+
+    if (this.state === REJECTED && typeof handler.onRejected === 'function') {
+      handler.onRejected(value)
+    }
+  }
+}
+
+Promise.prototype.done = function(onFulfilled, onRejected) {
+  // 保证这个方法是异步的
+  setTimeout(function() {
+    handle({
+      onFulfilled: onFulfilled,
+      onRejected: onRejected
+    })
+  }, 0)
+}
+
+Promise.prototype.then = function(onFulfilled, onRejected) {
+  const self = this
+
+  return new Promise(function(resolve, reject) {
+    return self.done(
+      function(result) {
+        if (typeof onFulfilled === 'function') {
+          try {
+            return resolve(onFulfilled(result))
+          } catch (error) {
+            return reject(error)
+          }
+        } else {
+          return resolve(result)
+        }
+      },
+      function(reason) {
+        if (typeof onRejected === 'function') {
+          try {
+            return resolve(onRejected(reason))
+          } catch (error) {
+            return reject(error)
+          }
+        } else {
+          return reject(reason)
+        }
+      }
+    )
+  })
 }
 
 /**
