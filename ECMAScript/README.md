@@ -1,6 +1,5 @@
 # ECMAScript
 
-- [TypeScript 扫盲](/ECMAScript/12-TypeScript扫盲.md) —— 2017/03/21
 - [promiseA+规范](/ECMAScript/11-promiseA+规范.md) —— 2017/03/26
 
 ### 学习 JavaScript 数据结构与算法
